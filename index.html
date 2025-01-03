@@ -35,6 +35,21 @@
         .main-content.visible {
             opacity: 1;
         }
+        /* Add subtle hint to scroll */
+        .scroll-hint {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #00ff00;
+            font-family: monospace;
+            opacity: 0.7;
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-10px); }
+        }
     </style>
 </head>
 <body class="bg-gray-100">
@@ -58,6 +73,7 @@
             \  /    \  /    \  /  
              \/      \/      \/  
               </pre>
+        <div class="scroll-hint">scroll to enter</div>
     </div>
 
     <!-- Main Content -->
@@ -66,7 +82,7 @@
     </div>
 
     <script>
-        // Simple scroll handler to hide overlay
+        // Only hide overlay on scroll
         window.addEventListener('scroll', function() {
             const overlay = document.getElementById('introOverlay');
             const mainContent = document.getElementById('mainContent');
@@ -79,18 +95,6 @@
                 }, 500);
             }
         });
-
-        // Auto-hide overlay after 5 seconds
-        setTimeout(() => {
-            const overlay = document.getElementById('introOverlay');
-            const mainContent = document.getElementById('mainContent');
-            
-            overlay.style.opacity = '0';
-            mainContent.classList.add('visible');
-            setTimeout(() => {
-                overlay.style.display = 'none';
-            }, 500);
-        }, 5000);
     </script>
 </body>
 </html>
