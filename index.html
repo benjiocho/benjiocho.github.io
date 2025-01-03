@@ -6,6 +6,14 @@
     <title>My Personal Website</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.js"></script>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
+        
+        body {
+            background: rgb(1, 4, 9);
+            font-family: 'Space Mono', monospace;
+            color: #00ff00;
+        }
+
         .ascii-overlay {
             position: fixed;
             top: 0;
@@ -19,6 +27,7 @@
             z-index: 1000;
             transition: opacity 0.5s ease-in-out;
         }
+
         .ascii-art {
             color: #00ff00;
             font-family: monospace;
@@ -28,19 +37,72 @@
             line-height: 1;
             text-shadow: 0 0 2px #00ff00;
         }
+
         .main-content {
             opacity: 0;
             transition: opacity 1s ease-in-out;
         }
+
         .main-content.visible {
             opacity: 1;
         }
+
+        .nav-link {
+            position: relative;
+        }
+
+        .nav-link::before {
+            content: '>';
+            position: absolute;
+            left: -15px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .nav-link:hover::before {
+            opacity: 1;
+        }
+
+        .section-title {
+            border-left: 2px solid #00ff00;
+            padding-left: 1rem;
+        }
+
+        .project-card {
+            border: 1px solid #00ff00;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.2);
+        }
+
+        .contact-input {
+            background: transparent;
+            border: 1px solid #00ff00;
+            color: #00ff00;
+        }
+
+        .contact-input:focus {
+            outline: none;
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+        }
     </style>
 </head>
-<body class="bg-gray-100">
-    <!-- Geometric Pattern Overlay -->
+<body>
+    <!-- ASCII Art Overlay -->
     <div class="ascii-overlay" id="introOverlay">
         <pre class="ascii-art">
+             
+             /\      /\      /\  
+            /  \    /  \    /  \  
+           /    \  /    \  /    \  
+          /      \/      \/      \  
+          \      /\      /\      /  
+           \    /  \    /  \    /  
+            \  /    \  /    \  /  
+             \/      \/      \/ 
              /\      /\      /\  
             /  \    /  \    /  \  
            /    \  /    \  /    \  
@@ -49,24 +111,122 @@
            \    /  \    /  \    /  
             \  /    \  /    \  /  
              \/      \/      \/  
-             /\      /\      /\  
-            /  \    /  \    /  \  
-           /    \  /    \  /    \  
-          /      \/      \/      \  
-          \      /\      /\      /  
-           \    /  \    /  \    /  
-            \  /    \  /    \  /  
-             \/      \/      \/  
-              </pre>
+             </pre>
     </div>
 
     <!-- Main Content -->
     <div class="main-content" id="mainContent">
-        [Previous website content would go here]
+        <!-- Navigation -->
+        <nav class="border-b border-green-500 bg-gray-900">
+            <div class="max-w-6xl mx-auto px-4">
+                <div class="flex justify-between py-4">
+                    <div class="text-green-500 font-bold">> YOUR_NAME</div>
+                    <div class="space-x-8">
+                        <a href="#about" class="nav-link text-green-500 hover:text-green-400">about</a>
+                        <a href="#projects" class="nav-link text-green-500 hover:text-green-400">projects</a>
+                        <a href="#contact" class="nav-link text-green-500 hover:text-green-400">contact</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- About Section -->
+        <section id="about" class="py-20">
+            <div class="max-w-6xl mx-auto px-4">
+                <h2 class="section-title text-2xl mb-8">ABOUT</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                    <div class="border border-green-500 p-6">
+                        <p class="mb-4">Hello, I'm a [your profession] based in [your location]. I specialize in creating clean, efficient solutions.</p>
+                        <p>01001000 01101001 00100001</p>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="border border-green-500 p-4">
+                            <h3 class="text-lg mb-2">SKILLS</h3>
+                            <ul class="list-none">
+                                <li>> Skill 1</li>
+                                <li>> Skill 2</li>
+                                <li>> Skill 3</li>
+                            </ul>
+                        </div>
+                        <div class="border border-green-500 p-4">
+                            <h3 class="text-lg mb-2">INTERESTS</h3>
+                            <ul class="list-none">
+                                <li>> Interest 1</li>
+                                <li>> Interest 2</li>
+                                <li>> Interest 3</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-20 bg-gray-900">
+            <div class="max-w-6xl mx-auto px-4">
+                <h2 class="section-title text-2xl mb-8">PROJECTS</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Project Card 1 -->
+                    <div class="project-card p-6">
+                        <h3 class="text-lg mb-4">PROJECT_01</h3>
+                        <p class="mb-4">Description of your first project goes here.</p>
+                        <div class="text-sm">> View Project</div>
+                    </div>
+                    <!-- Project Card 2 -->
+                    <div class="project-card p-6">
+                        <h3 class="text-lg mb-4">PROJECT_02</h3>
+                        <p class="mb-4">Description of your second project goes here.</p>
+                        <div class="text-sm">> View Project</div>
+                    </div>
+                    <!-- Project Card 3 -->
+                    <div class="project-card p-6">
+                        <h3 class="text-lg mb-4">PROJECT_03</h3>
+                        <p class="mb-4">Description of your third project goes here.</p>
+                        <div class="text-sm">> View Project</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20">
+            <div class="max-w-6xl mx-auto px-4">
+                <h2 class="section-title text-2xl mb-8">CONTACT</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                    <div>
+                        <p class="mb-4">Let's create something together.</p>
+                        <div class="space-y-2">
+                            <p>> email: your.email@example.com</p>
+                            <p>> location: Your City, Country</p>
+                        </div>
+                    </div>
+                    <form class="space-y-4">
+                        <div>
+                            <input type="text" placeholder="NAME" class="contact-input w-full p-2">
+                        </div>
+                        <div>
+                            <input type="email" placeholder="EMAIL" class="contact-input w-full p-2">
+                        </div>
+                        <div>
+                            <textarea placeholder="MESSAGE" rows="4" class="contact-input w-full p-2"></textarea>
+                        </div>
+                        <button type="submit" class="border border-green-500 px-6 py-2 hover:bg-green-500 hover:text-black transition-colors">SEND_MESSAGE</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="py-8 border-t border-green-500">
+            <div class="max-w-6xl mx-auto px-4">
+                <div class="text-center">
+                    <p>&copy; 2025 > YOUR_NAME.exe</p>
+                </div>
+            </div>
+        </footer>
     </div>
 
     <script>
-        // Only hide overlay on scroll
         window.addEventListener('scroll', function() {
             const overlay = document.getElementById('introOverlay');
             const mainContent = document.getElementById('mainContent');
@@ -80,151 +240,5 @@
             }
         });
     </script>
-</body>
-</html>
-
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Personal Website</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.js"></script>
-</head>
-<body class="bg-gray-100">
-    <!-- Navigation -->
-    <nav class="bg-white shadow-lg">
-        <div class="max-w-6xl mx-auto px-4">
-            <div class="flex justify-between">
-                <div class="flex space-x-7">
-                    <div>
-                        <a href="#" class="flex items-center py-4">
-                            <span class="font-semibold text-gray-500 text-lg">Your Name</span>
-                        </a>
-                    </div>
-                </div>
-                <div class="flex items-center space-x-6">
-                    <a href="#about" class="py-4 px-2 text-gray-500 hover:text-gray-900">About</a>
-                    <a href="#projects" class="py-4 px-2 text-gray-500 hover:text-gray-900">Projects</a>
-                    <a href="#contact" class="py-4 px-2 text-gray-500 hover:text-gray-900">Contact</a>
-                </div>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <div class="bg-white">
-        <div class="max-w-6xl mx-auto px-4 py-16">
-            <div class="text-center">
-                <h1 class="text-4xl font-bold text-gray-900 mb-4">Welcome to My Website</h1>
-                <p class="text-lg text-gray-600">Web Developer | Designer | Creator</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- About Section -->
-    <div id="about" class="bg-gray-100 py-16">
-        <div class="max-w-6xl mx-auto px-4">
-            <h2 class="text-3xl font-bold text-gray-900 mb-8">About Me</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div>
-                    <img src="/api/placeholder/400/400" alt="Profile picture" class="rounded-lg shadow-lg">
-                </div>
-                <div>
-                    <p class="text-gray-600 mb-4">
-                        Hello! I'm a passionate web developer with a love for creating beautiful and functional websites.
-                        I specialize in front-end development and enjoy turning complex problems into simple, beautiful solutions.
-                    </p>
-                    <p class="text-gray-600">
-                        When I'm not coding, you can find me exploring new technologies, reading tech blogs, or contributing
-                        to open-source projects.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Projects Section -->
-    <div id="projects" class="bg-white py-16">
-        <div class="max-w-6xl mx-auto px-4">
-            <h2 class="text-3xl font-bold text-gray-900 mb-8">My Projects</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Project Card 1 -->
-                <div class="bg-gray-100 rounded-lg shadow-lg overflow-hidden">
-                    <img src="/api/placeholder/400/300" alt="Project 1" class="w-full">
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-900 mb-2">Project One</h3>
-                        <p class="text-gray-600">A brief description of your first project goes here.</p>
-                    </div>
-                </div>
-
-                <!-- Project Card 2 -->
-                <div class="bg-gray-100 rounded-lg shadow-lg overflow-hidden">
-                    <img src="/api/placeholder/400/300" alt="Project 2" class="w-full">
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-900 mb-2">Project Two</h3>
-                        <p class="text-gray-600">A brief description of your second project goes here.</p>
-                    </div>
-                </div>
-
-                <!-- Project Card 3 -->
-                <div class="bg-gray-100 rounded-lg shadow-lg overflow-hidden">
-                    <img src="/api/placeholder/400/300" alt="Project 3" class="w-full">
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-900 mb-2">Project Three</h3>
-                        <p class="text-gray-600">A brief description of your third project goes here.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Contact Section -->
-    <div id="contact" class="bg-gray-100 py-16">
-        <div class="max-w-6xl mx-auto px-4">
-            <h2 class="text-3xl font-bold text-gray-900 mb-8">Contact Me</h2>
-            <div class="bg-white rounded-lg shadow-lg p-8">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-4">Get in Touch</h3>
-                        <p class="text-gray-600 mb-4">
-                            Have a question or want to work together? Feel free to reach out!
-                        </p>
-                        <div class="space-y-2">
-                            <p class="text-gray-600">Email: beniver98@gmail.com</p>
-                            <p class="text-gray-600">Location: Chicago, USA</p>
-                        </div>
-                    </div>
-                    <div>
-                        <form class="space-y-4">
-                            <div>
-                                <label class="block text-gray-700 mb-2" for="name">Name</label>
-                                <input type="text" id="name" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500">
-                            </div>
-                            <div>
-                                <label class="block text-gray-700 mb-2" for="email">Email</label>
-                                <input type="email" id="email" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500">
-                            </div>
-                            <div>
-                                <label class="block text-gray-700 mb-2" for="message">Message</label>
-                                <textarea id="message" rows="4" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500"></textarea>
-                            </div>
-                            <button type="submit" class="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600">Send Message</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <footer class="bg-white py-8">
-        <div class="max-w-6xl mx-auto px-4">
-            <div class="text-center text-gray-600">
-                <p>&copy; 2025 Benji Ocho. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
-</body>
-</html>
 </body>
 </html>
